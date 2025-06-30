@@ -1,7 +1,6 @@
-declare namespace NodeJS {
-  interface ProcessEnv {
+export interface ProcessEnv {
     MONGO_URI: string;
-    PORT?: string;
+    PORT: number;
     JWT_SECRET?: string;
   }
-}
+
