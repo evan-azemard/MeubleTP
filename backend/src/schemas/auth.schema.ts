@@ -7,14 +7,13 @@ const passwordSchema = z.string()
   .regex(/[!@#$%^&*(),.?":{}|<>]/, { message: "Votre mot de passe doit contenir au moins un caractère spécial" });
 
 export const registerUserSchema = z.object({
-  email: z.string().email("Email invalide"),
+  email: z.email("Email invalide"),
   password: passwordSchema,
 });
 
 export const loginUserSchema = z.object({
-  email: z.string().email("Email invalide"),
-  password: z.string().min(1, "Mot de passe requis"),
+  email: z.email("Email invalide").trim(),
+  password: z.string().min(1, "Mot de passe requis").trim(),
 });
 
 
-export const updateUserSchema = registerUserSchema.partial();
