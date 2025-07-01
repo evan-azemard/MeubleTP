@@ -12,7 +12,7 @@ const router = Router();
 router.get('/', getAllCompanies);
 router.get('/:id', getCompanyById);
 router.post('/', createCompany);
-router.patch('/:id', updateCompany);
+router.put('/:id', updateCompany);
 router.delete('/:id', deleteCompany);
 
 export default router;
