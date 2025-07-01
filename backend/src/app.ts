@@ -17,8 +17,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Point d'entrée
-app.use('/', indexRouter); 
+app.use('/', indexRouter);
 
 app.use('/api', apiRouter);
+
+
+app.use((err: any, req: express.Request, res: express.Response, _next: express.NextFunction) => {
+    res.status(500).json({
+        error: "Erreur interne du serveur",
+        message: err.message ?? "Une erreur inconnue est survenue.",
+    });
+});
 
 export default app;
