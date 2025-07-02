@@ -1,0 +1,102 @@
+<div id="layoutSidenav_content">
+  <main>
+    <div class="container-fluid px-4">
+      <h1 class="mt-4">Dashboard</h1>
+      <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+
+      <div class="row">
+        <!-- Formulaire Création Catégorie -->
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <h5>Créer une Catégorie</h5>
+            </div>
+            <div class="card-body">
+              <form id="form-category">
+                <div class="mb-3">
+                  <label for="categoryName" class="form-label">Nom de la catégorie</label>
+                  <input type="text" class="form-control" id="categoryName" name="categoryName" required />
+                </div>
+                <button type="submit" class="btn btn-primary">Créer Catégorie</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulaire Création Compagnie -->
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <h5>Créer une Compagnie</h5>
+            </div>
+            <div class="card-body">
+              <form id="form-company">
+                <div class="mb-3">
+                  <label for="companyName" class="form-label">Nom de la compagnie</label>
+                  <input type="text" class="form-control" id="companyName" name="companyName" required />
+                </div>
+                <div class="mb-3">
+                  <label for="companyAddress" class="form-label">Adresse</label>
+                  <input type="text" class="form-control" id="companyAddress" name="companyAddress" />
+                </div>
+                <button type="submit" class="btn btn-primary">Créer Compagnie</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulaire Création Matériel -->
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <h5>Créer un Matériel</h5>
+            </div>
+            <div class="card-body">
+              <form id="form-material">
+                <div class="mb-3">
+                  <label for="materialName" class="form-label">Nom du matériel</label>
+                  <input type="text" class="form-control" id="materialName" name="materialName" required />
+                </div>
+                <div class="mb-3">
+                  <label for="materialCategory" class="form-label">Catégorie</label>
+                  <select class="form-select" id="materialCategory" name="materialCategory" required>
+                    <option value="" selected disabled>Choisir une catégorie</option>
+                    <!-- Options à remplir dynamiquement -->
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="materialCompany" class="form-label">Compagnie</label>
+                  <select class="form-select" id="materialCompany" name="materialCompany" required>
+                    <option value="" selected disabled>Choisir une compagnie</option>
+                    <!-- Options à remplir dynamiquement -->
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Créer Matériel</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulaire Création Tags -->
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <h5>Créer un Tag</h5>
+            </div>
+            <div class="card-body">
+              <form id="form-tag">
+                <div class="mb-3">
+                  <label for="tagName" class="form-label">Nom du tag</label>
+                  <input type="text" class="form-control" id="tagName" name="tagName" required />
+                </div>
+                <button type="submit" class="btn btn-primary">Créer Tag</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

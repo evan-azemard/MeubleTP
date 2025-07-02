@@ -1,0 +1,53 @@
+<div id="layoutSidenav_content">
+  <main>
+    <div class="container-fluid px-4">
+      <h1 class="mt-4">Gestion des Matériaux</h1>
+      <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Matériaux</li>
+      </ol>
+
+      <!-- Formulaire création -->
+      <div class="card mb-4">
+        <div class="card-header">Créer un nouveau matériau</div>
+        <div class="card-body">
+          <form id="form-material-create" class="row g-3">
+            <div class="col-md-4">
+              <input type="text" class="form-control" id="materialName" placeholder="Nom" required />
+            </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control" id="materialType" placeholder="Type" required />
+            </div>
+            <div class="col-md-4">
+              <select class="form-select" id="materialCompany" required>
+                <option value="">Choisir une compagnie</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Créer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tableau des matériaux -->
+      <div class="card">
+        <div class="card-header">Liste des matériaux</div>
+        <div class="card-body">
+          <table class="table table-bordered" id="materialTable">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Compagnie</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="materialList"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/js/materials.js"></script>

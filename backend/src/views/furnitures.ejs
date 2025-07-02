@@ -1,0 +1,73 @@
+<div id="layoutSidenav_content">
+  <main>
+    <div class="container-fluid px-4">
+      <h1 class="mt-4">Gestion des Meubles</h1>
+      <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Meubles</li>
+      </ol>
+
+      <!-- Formulaire de création -->
+      <div class="card mb-4">
+        <div class="card-header">Ajouter un meuble</div>
+        <div class="card-body">
+          <form id="form-furniture-create" class="row g-3">
+            <div class="col-md-4">
+              <input type="text" class="form-control" id="furnitureName" placeholder="Nom du meuble" required />
+            </div>
+            <div class="col-md-2">
+              <input type="number" class="form-control" id="furnitureQty" placeholder="Quantité" value="1" min="1" required />
+            </div>
+            <div class="col-md-3">
+              <select class="form-select" id="furnitureCategory" required></select>
+            </div>
+            <div class="col-md-3">
+              <select multiple class="form-select" id="furnitureTags"></select>
+            </div>
+
+            <!-- Matériaux -->
+            <div class="col-12" id="materialsSection">
+              <label>Matériaux utilisés</label>
+              <div class="row g-2 mb-2">
+                <div class="col-md-6">
+                  <select class="form-select material-select"></select>
+                </div>
+                <div class="col-md-4">
+                  <input type="number" class="form-control material-qty" placeholder="Quantité utilisée" min="1" />
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-danger remove-material">Supprimer</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="button" class="btn btn-secondary" id="addMaterial">Ajouter un matériau</button>
+              <button type="submit" class="btn btn-primary float-end">Créer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Liste -->
+      <div class="card">
+        <div class="card-header">Liste des meubles</div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Catégorie</th>
+                <th>Quantité</th>
+                <th>Matériaux</th>
+                <th>Tags</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="furnitureList"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/js/furnitures.js"></script>

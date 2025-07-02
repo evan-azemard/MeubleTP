@@ -1,0 +1,62 @@
+<div id="layoutSidenav_content">
+  <main>
+    <div class="container-fluid px-4">
+      <h1 class="mt-4">Gestion des Catégories</h1>
+      <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Catégories</li>
+      </ol>
+
+      <!-- création -->
+      <div class="card mb-4">
+        <div class="card-header">Créer une nouvelle catégorie</div>
+        <div class="card-body">
+          <form id="form-category-create" class="row g-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="categoryName" placeholder="Nom de la catégorie" required />
+            </div>
+            <div class="col-md-6">
+              <button type="submit" class="btn btn-primary">Créer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- modification  -->
+      <div class="card mb-4 d-none" id="edit-card">
+        <div class="card-header">Modifier une catégorie</div>
+        <div class="card-body">
+          <form id="form-category-edit" class="row g-3">
+            <input type="hidden" id="editCategoryId" />
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="editCategoryName" placeholder="Nouveau nom" required />
+            </div>
+            <div class="col-md-6">
+              <button type="submit" class="btn btn-success">Mettre à jour</button>
+              <button type="button" id="cancelEdit" class="btn btn-secondary">Annuler</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- catégories -->
+      <div class="card">
+        <div class="card-header">Liste des catégories</div>
+        <div class="card-body">
+          <table class="table table-bordered" id="categoryTable">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="categoryList">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/js/categories.js"></script>
