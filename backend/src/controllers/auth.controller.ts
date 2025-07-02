@@ -64,4 +64,19 @@ export const login = async (req: Request, res: Response) => {
 export const logout = (_req: Request, res: Response) => {
   res.clearCookie("accessToken");
   res.status(200).json({ message: "Déconnexion réussie" });
+  return;
+};
+
+export const me = async (req: Request, res: Response) => {
+  try {
+    const userId = res.locals.user.userId;
+    const user = await User.findById(userId).select('email').exec();
+    if (!user) {
+      res.status(404).json({ error: "Utilisateur non trouvé" });
+      return;
+    } 
+    res.json({ email: user.email });
+  } catch (err) {
+    res.status(500).json({ error: "Erreur serveur" });
+  }
 };
