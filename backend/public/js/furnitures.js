@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tags.forEach(tag => {
       const opt = document.createElement("option");
       opt.value = tag._id;
-      opt.textContent = tag.name;
+      opt.textContent = tag.label;
       tagSelect.appendChild(opt);
     });
 
@@ -74,38 +74,50 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Soumission du formulaire
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+ form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    const materials = Array.from(materialsSection.querySelectorAll(".row")).map(row => {
-      const materialId = row.querySelector(".material-select").value;
-      const quantityUsed = parseInt(row.querySelector(".material-qty").value);
-      return { materialId, quantityUsed };
-    });
+const materials = Array.from(materialsSection.querySelectorAll(".row"))
+  .map(row => {
+    const materialId = row.querySelector(".material-select").value;
+    const qtyValue = row.querySelector(".material-qty").value;
+    const quantityUsed = parseInt(qtyValue);
+    if (!materialId || isNaN(quantityUsed) || quantityUsed < 1) return null;
+    return { materialId, quantityUsed };
+  })
+  .filter(Boolean);
 
-    const payload = {
-      name: nameInput.value.trim(),
-      quantity: parseInt(qtyInput.value),
-      category: categorySelect.value,
-      tags: Array.from(tagSelect.selectedOptions).map(opt => opt.value),
-      materials,
-    };
 
-    const res = await fetch("/api/furnitures", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify(payload),
-    });
+  const selectedTags = Array.from(tagSelect.selectedOptions).map((opt) => opt.value);
 
-    if (res.ok) {
-      form.reset();
-      furnitureList.innerHTML = "";
-      await loadFurniture();
-    } else {
-      alert("Erreur création meuble");
-    }
+  const payload = {
+    name: nameInput.value.trim(),
+    quantity: parseInt(qtyInput.value),
+    category: categorySelect.value,
+    tags: selectedTags.length ? selectedTags : undefined,
+    materials,
+  };
+
+  console.log("Submit payload:", payload);
+
+  const res = await fetch("/api/furnitures", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify(payload),
   });
+
+  if (res.ok) {
+    form.reset();
+    furnitureList.innerHTML = "";
+    await loadFurniture();
+  } else {
+    const errorText = await res.text();
+    console.error("Erreur création meuble, status:", res.status, "Body:", errorText);
+    alert(`Erreur création meuble: ${errorText}`);
+  }
+});
+
 
   async function loadFurniture() {
     const res = await fetch("/api/furnitures");
