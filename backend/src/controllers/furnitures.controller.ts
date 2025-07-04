@@ -30,7 +30,8 @@ export const getFurnitureById = async (req: Request, res: Response) => {
 
 export const createFurniture = async (req: Request, res: Response) => {
     const { name, quantity, category, materials, tags } = req.body;
-    const createdBy = res.locals.user.id;
+    console.log(res.locals.user);
+    const createdBy = res.locals.user.userId;
 
     const furniture = await Furniture.create({
         name,

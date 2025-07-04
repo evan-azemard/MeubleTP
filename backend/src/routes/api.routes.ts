@@ -7,13 +7,14 @@ import tagsRouter from './tags.routes';
 import statsRouter from './stats.routes';
 import furnituresRouter from './furnitures.routes';
 import categoriesRouter from './categories.routes';
+import { isAuthenticated } from '../middlewares/isAuthenficated';
 
 const router = express.Router();
 
 
 router.use('/users', usersRouter);
 router.use('/auth', authRouter);
-router.use('/furnitures', furnituresRouter);
+router.use('/furnitures', isAuthenticated, furnituresRouter);
 router.use('/categories', categoriesRouter);
 router.use('/materials', materialsRouter);
 router.use('/companies', companiesRouter);

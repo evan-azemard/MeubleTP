@@ -1,0 +1,43 @@
+<div id="layoutSidenav_content">
+  <main>
+    <div class="container-fluid px-4">
+      <h1 class="mt-4">Gestion des Tags</h1>
+      <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Tags</li>
+      </ol>
+
+      <!-- Formulaire de création -->
+      <div class="card mb-4">
+        <div class="card-header">Ajouter un tag</div>
+        <div class="card-body">
+          <form id="form-tag-create" class="row g-3">
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="tagLabel" placeholder="Nom du tag" required />
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-primary w-100">Ajouter</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Liste des tags -->
+      <div class="card">
+        <div class="card-header">Liste des tags</div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tagList"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="/js/tags.js"></script>

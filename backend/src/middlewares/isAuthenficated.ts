@@ -4,9 +4,10 @@ import { Request, Response, NextFunction } from 'express';
 const JWT_SECRET = process.env.JWT_SECRET as string;
 
 export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
-  const token = req.cookies?.token;
+  const token = req.cookies?.accessToken;
   if (!token) {
-    return res.status(401).json({ error: "Connexion requise" });
+     res.status(401).json({ error: "Connexion requise" });
+     return
   }
 
   try {
@@ -14,6 +15,7 @@ export const isAuthenticated = (req: Request, res: Response, next: NextFunction)
     res.locals.user = decoded;
     next();
   } catch {
-    return res.status(401).json({ error: "Token invalide" });
+     res.status(401).json({ error: "Token invalide" });
+     return;
   }
 };
